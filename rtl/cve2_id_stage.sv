@@ -500,7 +500,7 @@ module cve2_id_stage #(
   // Register file write address mux
   always_comb begin : rf_waddr_id_mux
     unique case ($bits(rf_wd_sel_e)'({rf_wdata_sel}))
-      RF_WD_EX:     rf_waddr_id_o  = rf_waddr_id;
+      RF_WD_EX,
       RF_WD_CSR:    rf_waddr_id_o  = rf_waddr_id;
       RF_WD_COPROC: rf_waddr_id_o  = XInterface? x_result_i.rd : rf_waddr_id;
       default:      rf_waddr_id_o  = rf_waddr_id;
